@@ -1,0 +1,10 @@
+html {
+    background-color: #000;
+    color: #666;
+}
+#gameHere{
+    background-color: #090909;
+    text-align: center;
+    border: 1px solid #666;
+    width: 50%;
+}
