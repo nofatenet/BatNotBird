@@ -35,14 +35,37 @@ document.onkeydown = function(e) {
     }
 };
 
-//coordinates:
+
+// OR why not use mouse:
+
+// Not So Good:
+// const goUp = () => batY -= 10;
+// let canvasDom = document.querySelector("canvas");
+// canvasDom.addEventListener("wheel", goUp); 
+
+// This Is The Good Way!
+function wheelAction(event) {
+    event.preventDefault();
+
+    // Mouse Sensitivity (just like in Doom!)
+    batY += event.deltaY * -0.15;
+
+    // Restrict Bat Limits
+    batY = Math.min(Math.max(0, batY), 360);
+}
+
+const el = document.querySelector('canvas');
+el.onwheel = wheelAction;
+
+
+// coordinates:
 var chimney = [];
 chimney[0] = { x: cvs.width , y: 0 };
 
 var ground = [];
 ground[0] = {x: cvs.width , y: cvs.height - fg.height };
 
-// Images drawing :
+// Images drawing:
 fg.onload = function() {
     ctx.drawImage(bg, 0, 0);
     //ctx.drawImage(fg, 0, cvs.height - fg.height);
